@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Environment and editors
+.env
+.vscode/
+.idea/
+.DS_Store
+
+# Generated data
+data/raw/*
+data/curated/*
+!data/raw/.gitkeep
+!data/curated/.gitkeep
+
+# Local databases
+*.duckdb
+*.db
+
+# Power BI local/cache files
+*.pbix~
