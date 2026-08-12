@@ -39,9 +39,9 @@ Create `dim_customer`, `dim_product`, and `fact_sales`. Document the grain of ea
 
 Process only new or changed orders. Demonstrate that rerunning the same batch does not duplicate facts.
 
-## DE-006 — Add CI
+## DE-006 — Extend CI with data-quality checks
 
-Activate the GitHub Actions workflow after local commands are stable. Require formatting, linting, and tests on pull requests.
+CI already runs `ruff check` and `pytest` on every pull request (`.github/workflows/ci.yml`). Extend it to also fail on data-quality problems: run the checks from DE-003/DE-004 (uniqueness, nulls, accepted values) as part of the workflow, not just locally. Decide what should block a merge versus what should only warn.
 
 ## Later extensions
 
