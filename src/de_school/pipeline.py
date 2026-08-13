@@ -4,15 +4,18 @@ Keep this module small. It should coordinate steps implemented in dedicated modu
 not contain all ingestion and transformation logic itself.
 """
 
+from pathlib import Path
+
+from de_school.ingestion.customers import ingest_customers
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
 
 def run() -> None:
-    """Run the local learning pipeline.
-
-    First exercise: replace this placeholder with a call to a customer ingestion
-    function while keeping this orchestration function readable.
-    """
-    raise NotImplementedError(
-        "Pipeline not implemented yet. Start with exercise DE-001 in docs/learning-path.md."
+    """Run the local learning pipeline."""
+    ingest_customers(
+        PROJECT_ROOT / "data" / "source" / "customers.csv",
+        PROJECT_ROOT / "data" / "raw" / "customers.parquet",
     )
 
 
