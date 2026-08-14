@@ -9,6 +9,7 @@ from pathlib import Path
 import pyarrow.parquet as pq
 
 from de_school.ingestion.customers import ingest_customers
+from de_school.ingestion.order_lines import ingest_order_lines
 from de_school.ingestion.orders import ingest_orders
 from de_school.ingestion.products import ingest_products
 
@@ -23,6 +24,8 @@ def _read_id_set(parquet_path: Path, column: str) -> set[str]:
 def run() -> None:
     """Run the local learning pipeline."""
     customers_path = PROJECT_ROOT / "data" / "raw" / "customers.parquet"
+    products_path = PROJECT_ROOT / "data" / "raw" / "products.parquet"
+    orders_path = PROJECT_ROOT / "data" / "raw" / "orders.parquet"
 
     ingest_customers(
         PROJECT_ROOT / "data" / "source" / "customers.csv",
@@ -30,12 +33,18 @@ def run() -> None:
     )
     ingest_products(
         PROJECT_ROOT / "data" / "source" / "products.csv",
-        PROJECT_ROOT / "data" / "raw" / "products.parquet",
+        products_path,
     )
     ingest_orders(
         PROJECT_ROOT / "data" / "source" / "orders.csv",
-        PROJECT_ROOT / "data" / "raw" / "orders.parquet",
+        orders_path,
         known_customer_ids=_read_id_set(customers_path, "customer_id"),
+    )
+    ingest_order_lines(
+        PROJECT_ROOT / "data" / "source" / "order_lines.csv",
+        PROJECT_ROOT / "data" / "raw" / "order_lines.parquet",
+        known_order_ids=_read_id_set(orders_path, "order_id"),
+        known_product_ids=_read_id_set(products_path, "product_id"),
     )
 
 
