@@ -1,11 +1,23 @@
 {
   "version": 1,
   "skills": {
+    "activator-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/activator-cli/SKILL.md",
+      "computedHash": "85e28faa50b3ae0fdaa93020df24f1ae377cdce2e927ddf55f1fa5ac600fea00"
+    },
     "ask-matt": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/ask-matt/SKILL.md",
       "computedHash": "fff0bc3373f1f44b1df71e11d1d490177c6a15be3a7da3c206145e242f18566b"
+    },
+    "azmon-mirroredcatalogs-operations-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/azmon-mirroredcatalogs-operations-cli/SKILL.md",
+      "computedHash": "75451612af05dec736c774138295a6611437be4e7ae676737f9f0ff9f02635f3"
     },
     "claude-handoff": {
       "source": "mattpocock/skills",
@@ -25,6 +37,24 @@
       "skillPath": "skills/engineering/codebase-design/SKILL.md",
       "computedHash": "385da7f2747bd681c24029b7aaf18b58e5649383f0402522db4233344d8fc7d5"
     },
+    "databricks-migration": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/databricks-migration/SKILL.md",
+      "computedHash": "777facae30f06bb92d9ba60a72fe21fb78afed0fa6eb38fe4fd85a18db6bf776"
+    },
+    "dataflows-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/dataflows-cli/SKILL.md",
+      "computedHash": "0b6f02060d1c738d561806c15940e2ada043cae727963e98d8c8730063bf2fff"
+    },
+    "deployment-pipelines-authoring-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/deployment-pipelines-authoring-cli/SKILL.md",
+      "computedHash": "30220f66a69623aca8901bba5c4321e3a0be6c0924eb040370d3587844b23469"
+    },
     "diagnosing-bugs": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -37,11 +67,59 @@
       "skillPath": "skills/engineering/domain-modeling/SKILL.md",
       "computedHash": "f54e391ce6cc28052af46840e3ef8519fd5e746331255510574f0270153186db"
     },
+    "e2e-fabric-cost-estimation": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/e2e-fabric-cost-estimation/SKILL.md",
+      "computedHash": "1b13974dfefe336906bac4ce91c09e769515e7c3d481c68658ab8b78457bc2f4"
+    },
+    "e2e-medallion-architecture": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/e2e-medallion-architecture/SKILL.md",
+      "computedHash": "aa69fc859222fa84594dbbd6afe904b4036daf0b84ca9ffef39132495631b5ac"
+    },
+    "eventhouse-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/eventhouse-cli/SKILL.md",
+      "computedHash": "10a6447f721ff6d9b5e8e0e637d5cbc22accefb2a8d989c50b5d1b1d2ee94fe1"
+    },
+    "eventschemaset-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/eventschemaset-cli/SKILL.md",
+      "computedHash": "0d61480176544014b8be99c472e386408abbc5f68a3108df77e67bf62416acc5"
+    },
+    "eventstream-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/eventstream-cli/SKILL.md",
+      "computedHash": "6e57d55798760bb7552859dcf389aafd1f289173af266f3ebca9e30f4287c5f5"
+    },
+    "fabriciq": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/fabriciq/SKILL.md",
+      "computedHash": "8b296c6449702b377bc37580938cc7340ca1ead4067005a3d7417e8fa13856df"
+    },
+    "fabriciq-ontology-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/fabriciq-ontology-cli/SKILL.md",
+      "computedHash": "e3a98060a5a7f5151db8d0183ffa441dfe00e90bfd464a8bdcbfb28e24328a7f"
+    },
     "git-guardrails-claude-code": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/misc/git-guardrails-claude-code/SKILL.md",
       "computedHash": "09fcce45d14340a33146b939f65056ca98481b7e6439683f82c3cf600fb5ee98"
+    },
+    "git-integration-operations-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/git-integration-operations-cli/SKILL.md",
+      "computedHash": "d080906fbf77f93251bc2767955d9b44790cb77a01a97e298d0a477d92f4c1bf"
     },
     "grill-me": {
       "source": "mattpocock/skills",
@@ -67,6 +145,12 @@
       "skillPath": "skills/productivity/handoff/SKILL.md",
       "computedHash": "7b03a812d5ca10fa8fe69d4cf8a34542684db51f5db0271254b96074e9f3a243"
     },
+    "hdinsight-migration": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/hdinsight-migration/SKILL.md",
+      "computedHash": "6e3f8e356779734a9617193d5ed35df2a366ef4379e2b09c5b2401a4af98a0ae"
+    },
     "implement": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -90,6 +174,36 @@
       "sourceType": "github",
       "skillPath": "skills/misc/migrate-to-shoehorn/SKILL.md",
       "computedHash": "7d31e494a384d1a5b88d1dec6e1f50e673ef1a60f7b0b6e92babfbb242f79b62"
+    },
+    "pipeline-migration": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/pipeline-migration/SKILL.md",
+      "computedHash": "61b6a3c3fd576655f5a60aa9ac2057b283cea7d3be4386e5c8a480108d994145"
+    },
+    "powerbi-report-authoring": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/powerbi-report-authoring/SKILL.md",
+      "computedHash": "b6a39640ab3c598495c60d22cee86818edcf88a31bca7780b7ba0524ac41f7d1"
+    },
+    "powerbi-report-design": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/powerbi-report-design/SKILL.md",
+      "computedHash": "a21664a8b1df841cd4b2f17fe724d7ebbd4b3e9eab4a70f3f461975aeecd0420"
+    },
+    "powerbi-report-management": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/powerbi-report-management/SKILL.md",
+      "computedHash": "b9f0822eace3d363058b8ae0a73b73604233df615a804a77b854ed6ef051ed59"
+    },
+    "powerbi-report-planning": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/powerbi-report-planning/SKILL.md",
+      "computedHash": "f3115878a43a1c754016e60eae0fa45966b6a96974af67dd287c1fa6e85de9dc"
     },
     "prototype": {
       "source": "mattpocock/skills",
@@ -115,6 +229,18 @@
       "skillPath": "skills/misc/scaffold-exercises/SKILL.md",
       "computedHash": "0f8154a7be9fc5ebe6ae0550d520259fadfdd512c166cb7f137f8e697aae4017"
     },
+    "search-consumption-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/search-consumption-cli/SKILL.md",
+      "computedHash": "a5873c4cc8f7590a63b0f957686421fc27c43802f02e8b055bfeaac782a9cd83"
+    },
+    "semantic-model-authoring": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/semantic-model-authoring/SKILL.md",
+      "computedHash": "cc619feefbcac64ed2091146e2dd7ca0f77580963e64eccf1bdd3a2e744a170f"
+    },
     "setup-matt-pocock-skills": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -132,6 +258,30 @@
       "sourceType": "github",
       "skillPath": "skills/in-progress/setup-ts-deep-modules/SKILL.md",
       "computedHash": "6dbd0830059a887ca6206dfa8c24baf7e28be7321471d2b899887fff9b77e34f"
+    },
+    "spark-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/spark-cli/SKILL.md",
+      "computedHash": "c4be61b47237896d9a00c2400cb94ada81a584bdc27536437ea5aac3861e64de"
+    },
+    "sqldb-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/sqldb-cli/SKILL.md",
+      "computedHash": "1825914364cde7f7f515c07fa08923345428a8694bc60b7ca5ba162e9000601b"
+    },
+    "sqldw-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/sqldw-cli/SKILL.md",
+      "computedHash": "abbdc17cb6f55aaa35b844802275d676f8c9a72c81b4b82a98b0e6dbc4878962"
+    },
+    "synapse-migration": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/synapse-migration/SKILL.md",
+      "computedHash": "366e45c089cfcc6e0509d1dad11c2ded973a07949f7b46426dfcaef2493d13fa"
     },
     "tdd": {
       "source": "mattpocock/skills",
@@ -168,6 +318,12 @@
       "sourceType": "github",
       "skillPath": "skills/engineering/triage/SKILL.md",
       "computedHash": "f844266a4d3b742b42045a162acb8eda26b8e9359a3b7a3526665c453148473a"
+    },
+    "variable-library-cli": {
+      "source": "microsoft/skills-for-fabric",
+      "sourceType": "github",
+      "skillPath": "skills/variable-library-cli/SKILL.md",
+      "computedHash": "5dfaacbd6a5c22b05fff82c99d2387c58a698b80f5a72656bd5279641c8c9679"
     },
     "wait-what": {
       "source": "mattpocock/skills",
