@@ -15,32 +15,30 @@ Turn simple source files into trustworthy analytical datasets while learning:
 ## Planned architecture
 
 ```text
-CSV / JSON sources
+DE-001 / DE-002: local Python + Parquet learning exercises
         |
         v
-Python ingestion
+DE-FAB-001: Fabric workspace, OneLake Lakehouse, and Git integration
         |
         v
-Raw Parquet files
+Fabric notebooks + Delta tables (Bronze -> Silver -> Gold)
         |
         v
-DuckDB + SQL transformations
+Fabric pipeline orchestration + data-quality checks
         |
         v
-Curated dimensions and facts
-        |
-        v
-Power BI
+Direct Lake semantic model + Power BI
 ```
 
-The first version deliberately contains placeholders. The purpose is to implement them together through issues and pull requests rather than receiving a finished solution.
+The first two exercises deliberately build local foundations. From DE-003 onward, Fabric is the execution and persistence platform; local Python remains valuable for reusable logic and unit tests. Read the [Microsoft Fabric guide](docs/microsoft-fabric.md) before starting Fabric work.
 
 ## Start here
 
 1. Read [`docs/getting-started.md`](docs/getting-started.md).
 2. Read [`docs/working-agreement.md`](docs/working-agreement.md).
-3. Pick the first exercise from [`docs/learning-path.md`](docs/learning-path.md).
-4. Create an issue and a branch before changing code.
+3. Read [`docs/microsoft-fabric.md`](docs/microsoft-fabric.md) before DE-FAB-001 or later.
+4. Pick the first exercise from [`docs/learning-path.md`](docs/learning-path.md).
+5. Create an issue and a branch before changing code.
 
 ## Local setup
 
@@ -65,6 +63,7 @@ The pipeline currently raises a guided `NotImplementedError`. Making the first s
 ```text
 src/de_school/       reusable Python pipeline code
 sql/                 SQL transformations added over time
+fabric/              Fabric-managed item definitions after Git integration
 tests/               code and data-quality tests
 data/source/         small versioned teaching inputs
 data/raw/             generated raw outputs, not committed

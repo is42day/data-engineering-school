@@ -27,27 +27,51 @@ Open decisions to discuss together:
 
 Add customers, products, orders, and order-line inputs. Define the grain of every file before coding. Include at least one invalid foreign key and decide how to handle it.
 
-## DE-003 — Build staging SQL models
+## DE-FAB-001 — Establish the Microsoft Fabric development platform
 
-Create SQL that normalizes types and column names without embedding reporting logic. Add tests for uniqueness, nulls, and accepted values.
+**Goal:** Establish the smallest repeatable Fabric foundation before moving DE-003+ execution to Fabric.
 
-## DE-004 — Build a star schema
+Acceptance criteria:
 
-Create `dim_customer`, `dim_product`, and `fact_sales`. Document the grain of each model and connect the output to Power BI.
+- Create the capacity-assigned `de-school-dev` workspace.
+- Connect the workspace to this GitHub repository, branch `main`, using `fabric/` as the Git folder.
+- Create `lh_de_school_dev` and `env_de_school` in the workspace.
+- Verify that a simple notebook can attach to the lakehouse and environment, write a disposable Delta table, and be committed through Fabric Git integration.
+- Create and document workspace roles; do not put secrets or data in Git.
+- Record the configured capacity, workspace, lakehouse, environment, and Git binding in the issue/PR.
+
+Read [`docs/microsoft-fabric.md`](microsoft-fabric.md) before starting. It is the architecture and operating guide for all Fabric work.
+
+## DE-003 — Build Fabric Silver staging models
+
+**Goal:** Transform Bronze Delta tables into typed, normalized Silver Delta tables through a Fabric notebook.
+
+Acceptance criteria:
+
+- Create a thin `10_build_silver` notebook attached to `lh_de_school_dev` and `env_de_school`.
+- Transform `bronze_customers`, `bronze_products`, `bronze_orders`, and `bronze_order_lines` into corresponding `silver_` tables using Spark SQL and/or PySpark.
+- Normalize types and column names without embedding reporting logic.
+- Document each table's grain, key, nullable fields, accepted values, and foreign-key expectations.
+- Add checks for uniqueness, nulls, foreign-key validity, and accepted values.
+- Keep reusable validation code in `src/de_school/`; do not grow one large notebook.
+
+## DE-004 — Build the Fabric Gold star schema
+
+Create `gold_dim_customer`, `gold_dim_product`, and `gold_fact_sales`. Document the grain of each model, then create a Direct Lake semantic model and a small Power BI report over the Gold tables.
 
 ## DE-005 — Add incremental loading
 
-Process only new or changed orders. Demonstrate that rerunning the same batch does not duplicate facts.
+Process only new or changed orders into Delta tables. Demonstrate an idempotent rerun and use Delta-aware techniques such as `MERGE` where appropriate.
 
-## DE-006 — Extend CI with data-quality checks
+## DE-006 — Orchestrate and promote the Fabric solution
 
-CI already runs `ruff check` and `pytest` on every pull request (`.github/workflows/ci.yml`). Extend it to also fail on data-quality problems: run the checks from DE-003/DE-004 (uniqueness, nulls, accepted values) as part of the workflow, not just locally. Decide what should block a merge versus what should only warn.
+Create `pl_de_school` to run Bronze ingestion, Silver transformation, Silver quality checks, Gold transformation, and Gold quality checks in dependency order. Add `de-school-test`, then practise promotion through a Fabric deployment pipeline. Keep GitHub CI responsible for source-code tests and linting; pipeline-run data checks protect Fabric data.
 
 ## Later extensions
 
 - API ingestion with pagination and retry handling
-- dbt migration for SQL transformations
-- orchestration with Dagster, Prefect, or Airflow
-- Docker development environment
-- deployment to Azure or Databricks
-- secrets management and environment-specific configuration
+- Package and attach reusable Python code as a wheel through the Fabric environment
+- Production workspace and controlled DEV/TEST/PROD promotion
+- Secrets management and environment-specific configuration
+- Source shortcuts, APIs, and incremental external ingestion
+- More advanced orchestration, monitoring, and alerting
