@@ -29,7 +29,7 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-extend-exclude = [".claude", ".agents"]
+extend-exclude = [".claude", ".agents", "fabric/"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
