@@ -42,18 +42,22 @@ Acceptance criteria:
 
 Read [`docs/microsoft-fabric.md`](microsoft-fabric.md) before starting. It is the architecture and operating guide for all Fabric work.
 
-## DE-003 — Build Fabric Silver staging models
+## DE-003 — Build Fabric Bronze ingestion and Silver staging models
 
-**Goal:** Transform Bronze Delta tables into typed, normalized Silver Delta tables through a Fabric notebook.
+**Goal:** Land the four source files as Bronze Delta tables, then transform Bronze into typed, normalized Silver Delta tables, both through Fabric notebooks.
 
 Acceptance criteria:
 
-- Create a thin `10_build_silver` notebook attached to `lh_de_school_dev` and `env_de_school`.
-- Transform `bronze_customers`, `bronze_products`, `bronze_orders`, and `bronze_order_lines` into corresponding `silver_` tables using Spark SQL and/or PySpark.
+- Create a thin `nb_bronze_ingest_sources` notebook (naming per `docs/microsoft-fabric.md`'s `nb_<layer>_<purpose>` convention) attached to `lh_de_school_dev` and `env_de_school`.
+- Load `customers.csv`, `products.csv`, `orders.csv`, and `order_lines.csv` from the lakehouse `Files` area into `bronze_customers`, `bronze_products`, `bronze_orders`, and `bronze_order_lines` Delta tables.
+- Preserve source-aligned values; add ingest timestamp, batch/run identifier, and source name per row. No reporting calculations in Bronze.
+- Create a thin `nb_silver_build_models` notebook attached to `lh_de_school_dev` and `env_de_school`.
+- Transform the four `bronze_` tables into corresponding `silver_` tables using Spark SQL and/or PySpark.
 - Normalize types and column names without embedding reporting logic.
 - Document each table's grain, key, nullable fields, accepted values, and foreign-key expectations.
-- Add checks for uniqueness, nulls, foreign-key validity, and accepted values.
+- Add checks for uniqueness, nulls, foreign-key validity, and accepted values (a `nb_quality_silver` notebook, or checks inline in `nb_silver_build_models` — decide and record which).
 - Keep reusable validation code in `src/de_school/`; do not grow one large notebook.
+- Decide and document the error policy for invalid Bronze/Silver records (fail the run vs. quarantine vs. accept with warning) — this repo's existing ingestion steps fail fast, but confirm that still holds for Fabric notebooks before assuming it.
 
 ## DE-004 — Build the Fabric Gold star schema
 
