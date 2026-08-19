@@ -26,22 +26,33 @@
 
 # CELL ********************
 
-from pyspark.sql import Row
+import uuid
+from datetime import datetime, timezone
 
-# --- write: minimal non-sensitive fictional data ---
-df = spark.createDataFrame(
-    [Row(id=1, label="fabric_connectivity_ok"), Row(id=2, label="fabric_connectivity_ok")]
-)
-df.write.format("delta").mode("overwrite").saveAsTable("_smoketest")
+from pyspark.sql import functions as F
 
-# --- read back ---
-result = spark.read.table("_smoketest")
-result.show()
-assert result.count() == 2, "round-trip write/read failed"
-print("Lakehouse + environment connectivity OK")
+RUN_ID = str(uuid.uuid4())
+INGESTED_AT = datetime.now(timezone.utc)
 
-# --- clean up ---
-spark.sql("DROP TABLE IF EXISTS _smoketest")
+SOURCE_FILES = {
+    "customers": "customers.csv",
+    "products": "products.csv",
+    "orders": "orders.csv",
+    "order_lines": "order_lines.csv",
+}
+
+for table_name, filename in SOURCE_FILES.items():
+    raw_df = spark.read.option("header", True).csv(f"Files/{filename}")
+
+    bronze_df = (
+        raw_df
+        .withColumn("_ingested_at", F.lit(INGESTED_AT))
+        .withColumn("_source_name", F.lit(filename))
+        .withColumn("_batch_id", F.lit(RUN_ID))
+    )
+
+    bronze_df.write.format("delta").mode("overwrite").saveAsTable(f"bronze_{table_name}")
+    print(f"bronze_{table_name}: {bronze_df.count()} rows")
 
 # METADATA ********************
 
